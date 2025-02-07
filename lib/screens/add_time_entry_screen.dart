@@ -8,11 +8,11 @@ class AddTimeEntryScreen extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _AddTimeEntryScreenState();
+    return _AddTimeEntryScreen();
   }
 }
 
-class _AddTimeEntryScreenState extends State<AddTimeEntryScreen> {
+class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
   final _formKey = GlobalKey<FormState>();
   String projectId = '';
   String taskId = '';

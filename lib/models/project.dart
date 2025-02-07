@@ -14,7 +14,7 @@ class Project {
     return Project.withID(name: json['name'], id: json['id']);
   }
 
-  Map<String, String> toJson(Project project) {
+  Map<String, String> toJson() {
     return {'id': id, 'name': name};
   }
 }

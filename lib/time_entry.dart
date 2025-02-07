@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:time_tracker/providers/time_entry_provider.dart';
+import 'package:time_tracker/screens/add_time_entry_screen.dart';
 import 'package:time_tracker/widgets/drawer_menu.dart';
+import 'package:time_tracker/widgets/no_data_found.dart';
 
 class TimeEntry extends StatefulWidget {
   const TimeEntry({super.key});
@@ -25,7 +27,14 @@ class _TimeEntryState extends State<TimeEntry>
     _tabController = TabController(vsync: this, length: myTabs.length);
   }
 
-  addTimeEntryScreen() {}
+  addTimeEntryScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddTimeEntryScreen(),
+      ),
+    );
+  }
 
   void selectPageDrawer(int indexTab) {
     Navigator.of(context).pop();
@@ -43,21 +52,23 @@ class _TimeEntryState extends State<TimeEntry>
         title: const Text('Time Tracking'),
         centerTitle: true,
         bottom: TabBar(
+          unselectedLabelColor: Colors.black,
           controller: _tabController,
-          indicatorColor: Colors.yellow,
+          indicatorColor: Colors.amber,
           labelColor: Colors.white,
           tabs: [...myTabs],
         ),
       ),
       drawer: Drawer(
         child: DrawerMenu(
-            selectedItemDrawer: (indexTab) => selectPageDrawer(indexTab)),
+          selectedItemDrawer: (indexTab) => selectPageDrawer(indexTab),
+        ),
       ),
       body: Consumer<TimeEntryProvider>(
         builder: (context, value, child) {
           return TabBarView(
             controller: _tabController,
-            children: [],
+            children: [NoDataFound(), NoDataFound()],
           );
         },
       ),

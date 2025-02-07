@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:time_tracker/providers/projet_manager_provider.dart';
+import 'package:time_tracker/providers/task_manager_provider.dart';
 import 'package:time_tracker/providers/time_entry_provider.dart';
 import 'package:time_tracker/screens/project_manager_sreeen.dart';
 import 'package:time_tracker/screens/task_manager_screen.dart';
@@ -25,7 +27,7 @@ final ThemeData themeData = ThemeData().copyWith(
         bodyMedium:
             TextStyle(color: lightColorScheme.onPrimaryContainer, fontSize: 18),
         bodySmall:
-            TextStyle(color: lightColorScheme.onPrimaryContainer, fontSize: 16),
+            TextStyle(color: lightColorScheme.onPrimaryContainer, fontSize: 14),
         headlineSmall: TextStyle(color: Colors.white),
       ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -50,6 +52,11 @@ void main() async {
         providers: [
           ChangeNotifierProvider(
               create: (context) => TimeEntryProvider(storage: localStorage)),
+          ChangeNotifierProvider(
+              create: (context) => TaskManagerProvider(storage: localStorage)),
+          ChangeNotifierProvider(
+              create: (context) =>
+                  ProjectManagerProvider(storage: localStorage)),
         ],
         child: MaterialApp(
           theme: themeData,

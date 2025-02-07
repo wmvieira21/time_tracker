@@ -14,7 +14,7 @@ class Task {
     return Task.withID(name: json['name'], id: json['id']);
   }
 
-  Map<String, String> toJson(Task project) {
+  Map<String, String> toJson() {
     return {'id': id, 'name': name};
   }
 }
