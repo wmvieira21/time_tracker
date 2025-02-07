@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:time_tracker/dialogs/add_item_dialog.dart';
 import 'package:time_tracker/models/taks.dart';
 import 'package:time_tracker/providers/task_manager_provider.dart';
+import 'package:time_tracker/widgets/no_data_found.dart';
+import 'package:time_tracker/widgets/tasks_list.dart';
 
 class TaskManagerScreen extends StatefulWidget {
   const TaskManagerScreen({super.key});
@@ -33,27 +35,18 @@ class _TaskManagerScreen extends State<TaskManagerScreen> {
   Widget build(BuildContext context) {
     List<Task> tasksList =
         Provider.of<TaskManagerProvider>(context, listen: true).tasks;
+
+    Widget mainContent = tasksList.isNotEmpty
+        ? TaskList(tasks: tasksList, deleteTask: _deleteItem)
+        : NoDataFound(icon: Icons.task, typeOfData: 'tasks');
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text("Manage Tasks"),
       ),
       body: Consumer(builder: (context, value, child) {
-        return ListView.builder(
-            padding: EdgeInsets.all(16),
-            itemCount: tasksList.length,
-            itemBuilder: (context, index) {
-              Task task = tasksList[index];
-              return ListTile(
-                leading: Icon(Icons.tag),
-                title: Text(task.name),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete),
-                  color: Colors.red,
-                  onPressed: () => _deleteItem(task),
-                ),
-              );
-            });
+        return mainContent;
       }),
       floatingActionButton: FloatingActionButton(
         tooltip: 'Add new Taks',

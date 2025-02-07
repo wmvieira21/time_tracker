@@ -68,7 +68,16 @@ class _TimeEntryState extends State<TimeEntry>
         builder: (context, value, child) {
           return TabBarView(
             controller: _tabController,
-            children: [NoDataFound(), NoDataFound()],
+            children: [
+              NoDataFound(
+                icon: Icons.hourglass_empty,
+                typeOfData: 'time entries',
+              ),
+              NoDataFound(
+                icon: Icons.hourglass_empty,
+                typeOfData: 'time entries',
+              ),
+            ],
           );
         },
       ),
