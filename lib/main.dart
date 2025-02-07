@@ -36,8 +36,7 @@ final ThemeData themeData = ThemeData().copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       padding: EdgeInsets.symmetric(horizontal: 28, vertical: 16),
-      backgroundColor:
-          lightColorScheme.onPrimaryContainer.withValues(alpha: 50),
+      backgroundColor: lightColorScheme.primary,
       foregroundColor: Colors.white,
       textStyle: TextStyle(fontSize: 18),
     ),
