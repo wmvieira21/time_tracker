@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:time_tracker/models/project.dart';
+import 'package:time_tracker/models/taks.dart';
+import 'package:time_tracker/providers/projet_manager_provider.dart';
+import 'package:time_tracker/providers/task_manager_provider.dart';
 import 'package:time_tracker/providers/time_entry_provider.dart';
 import 'package:time_tracker/screens/add_time_entry_screen.dart';
 import 'package:time_tracker/widgets/drawer_menu.dart';
@@ -28,12 +32,26 @@ class _TimeEntryState extends State<TimeEntry>
   }
 
   addTimeEntryScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => AddTimeEntryScreen(),
-      ),
-    );
+    List<Project> projects =
+        Provider.of<ProjectManagerProvider>(context, listen: false).projects;
+    List<Task> tasks =
+        Provider.of<TaskManagerProvider>(context, listen: false).tasks;
+    if (projects.isEmpty || tasks.isEmpty) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: Duration(seconds: 2),
+          content: Text('No projects or tasks were found.'),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AddTimeEntryScreen(),
+        ),
+      );
+    }
   }
 
   void selectPageDrawer(int indexTab) {

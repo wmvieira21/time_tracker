@@ -7,7 +7,8 @@ import 'package:time_tracker/models/time_entry.dart';
 import 'package:time_tracker/providers/projet_manager_provider.dart';
 import 'package:time_tracker/providers/task_manager_provider.dart';
 import 'package:time_tracker/providers/time_entry_provider.dart';
-import 'package:time_tracker/widgets/time_entry_dropdown.dart';
+import 'package:time_tracker/utils/util.dart';
+import 'package:time_tracker/widgets/add_entry_dropdown.dart';
 
 class AddTimeEntryScreen extends StatefulWidget {
   const AddTimeEntryScreen({super.key});
@@ -37,10 +38,20 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
 
     Provider.of<TimeEntryProvider>(context, listen: false)
         .addTimeEntry(timeEntry);
-
-    print(timeEntry.toJson());
-
     Navigator.pop(context);
+  }
+
+  void _showDateTimePicker() async {
+    DateTime now = DateTime.now();
+    DateTime firstDate = DateTime.now().subtract(Duration(days: 365));
+
+    DateTime? selectedDate = await showDatePicker(
+        context: context, firstDate: firstDate, lastDate: now);
+    if (selectedDate != null) {
+      setState(() {
+        date = selectedDate;
+      });
+    }
   }
 
   @override
@@ -70,6 +81,17 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
                 items: tasks,
                 label: 'Tasks',
                 onChange: (value) => taskId = value,
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Column(
+                  children: [
+                    Text('Date: ${dateFormatter.format(date)}'),
+                    OutlinedButton(
+                        onPressed: () => _showDateTimePicker(),
+                        child: Text('Select date'))
+                  ],
+                ),
               ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Total Time (hours)'),

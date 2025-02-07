@@ -2,4 +2,4 @@ import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 final uuidUtil = Uuid();
-final dataConvertter = DateFormat('yyyy-MM-dd');
+final dateFormatter = DateFormat('yyyy-MM-dd');

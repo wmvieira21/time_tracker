@@ -33,7 +33,7 @@ class TimeEntry {
       projectId: json['projectId'],
       taskId: json['taskId'],
       totalTime: json['totalTime'],
-      date: dataConvertter.parse(json['date']),
+      date: dateFormatter.parse(json['date']),
       notes: json['notes'],
     );
   }
@@ -44,7 +44,7 @@ class TimeEntry {
       'projectId': projectId,
       'taskId': taskId,
       'totalTime': totalTime,
-      'date': dataConvertter.format(date),
+      'date': dateFormatter.format(date),
       'notes': notes,
     };
   }

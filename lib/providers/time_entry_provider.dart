@@ -9,7 +9,7 @@ class TimeEntryProvider extends ChangeNotifier {
     _loadLocalEntries();
   }
 
-  List<TimeEntry> _entries = [];
+  final List<TimeEntry> _entries = [];
   LocalStorage storage;
 
   List<TimeEntry> get entries => _entries;
