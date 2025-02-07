@@ -8,17 +8,20 @@ import 'package:time_tracker/providers/time_entry_provider.dart';
 import 'package:time_tracker/screens/add_time_entry_screen.dart';
 import 'package:time_tracker/widgets/drawer_menu.dart';
 import 'package:time_tracker/widgets/no_data_found.dart';
+import 'package:time_tracker/widgets/time_entry_list.dart';
 
-class TimeEntry extends StatefulWidget {
-  const TimeEntry({super.key});
+class TimeEntryHomeScreen extends StatefulWidget {
+  const TimeEntryHomeScreen({super.key});
 
   @override
-  State<TimeEntry> createState() => _TimeEntryState();
+  State<TimeEntryHomeScreen> createState() => _TimeEntryHomeScreenState();
 }
 
-class _TimeEntryState extends State<TimeEntry>
+class _TimeEntryHomeScreenState extends State<TimeEntryHomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  List<Project> projects = [];
+  List<Task> tasks = [];
 
   static const List<Tab> myTabs = <Tab>[
     Tab(text: 'All Entries'),
@@ -29,13 +32,12 @@ class _TimeEntryState extends State<TimeEntry>
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: myTabs.length);
+    tasks = Provider.of<TaskManagerProvider>(context, listen: false).tasks;
+    projects =
+        Provider.of<ProjectManagerProvider>(context, listen: false).projects;
   }
 
   addTimeEntryScreen() {
-    List<Project> projects =
-        Provider.of<ProjectManagerProvider>(context, listen: false).projects;
-    List<Task> tasks =
-        Provider.of<TaskManagerProvider>(context, listen: false).tasks;
     if (projects.isEmpty || tasks.isEmpty) {
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(
@@ -87,10 +89,7 @@ class _TimeEntryState extends State<TimeEntry>
           return TabBarView(
             controller: _tabController,
             children: [
-              NoDataFound(
-                icon: Icons.hourglass_empty,
-                typeOfData: 'time entries',
-              ),
+              TimeEntryList(),
               NoDataFound(
                 icon: Icons.hourglass_empty,
                 typeOfData: 'time entries',

@@ -41,6 +41,10 @@ final ThemeData themeData = ThemeData().copyWith(
       textStyle: TextStyle(fontSize: 18),
     ),
   ),
+  cardTheme: CardThemeData(
+      margin: EdgeInsets.all(8),
+      clipBehavior: Clip.antiAlias,
+      shadowColor: lightColorScheme.onPrimaryContainer),
 );
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,7 +66,7 @@ void main() async {
           darkTheme: darkThemeData,
           themeMode: ThemeMode.system,
           routes: {
-            '/': (context) => const TimeEntry(),
+            '/': (context) => const TimeEntryHomeScreen(),
             '/projects': (context) => const ProjectManagerSreeen(),
             '/tasks': (context) => const TaskManagerScreen(),
           },
