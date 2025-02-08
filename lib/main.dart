@@ -20,7 +20,7 @@ final ThemeData themeData = ThemeData().copyWith(
   colorScheme: lightColorScheme,
   appBarTheme: AppBarTheme(
     backgroundColor: Color.fromARGB(255, 2, 184, 153),
-    titleTextStyle: TextStyle(fontSize: 26, color: Colors.white),
+    titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
     toolbarHeight: 60,
     iconTheme: IconThemeData(size: 28, color: Colors.black),
   ),
