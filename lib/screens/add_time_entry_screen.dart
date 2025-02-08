@@ -55,6 +55,13 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
   }
 
   @override
+  void dispose() {
+    totalTimeAmountController.dispose();
+    notesController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     List<Project> projects =
         Provider.of<ProjectManagerProvider>(context, listen: false).projects;
@@ -63,10 +70,10 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Time Entry'),
+        title: const Text('Add Time Entry'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: Column(
@@ -89,13 +96,15 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
                     Text('Date: ${dateFormatter.format(date)}'),
                     OutlinedButton(
                         onPressed: () => _showDateTimePicker(),
-                        child: Text('Select date'))
+                        child: const Text('Select date'))
                   ],
                 ),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Total Time (hours)'),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                decoration:
+                    const InputDecoration(labelText: 'Total Time (hours)'),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
                 controller: totalTimeAmountController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -108,7 +117,7 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
                 },
               ),
               TextFormField(
-                  decoration: InputDecoration(labelText: 'Notes'),
+                  decoration: const InputDecoration(labelText: 'Notes'),
                   controller: notesController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -122,7 +131,7 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
                     _saveEntry();
                   }
                 },
-                child: Text('Save entry'),
+                child: const Text('Save entry'),
               )
             ],
           ),

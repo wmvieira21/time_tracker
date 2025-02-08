@@ -4,7 +4,6 @@ import 'package:time_tracker/models/project.dart';
 import 'package:time_tracker/models/taks.dart';
 import 'package:time_tracker/providers/projet_manager_provider.dart';
 import 'package:time_tracker/providers/task_manager_provider.dart';
-import 'package:time_tracker/providers/time_entry_provider.dart';
 import 'package:time_tracker/screens/add_time_entry_screen.dart';
 import 'package:time_tracker/widgets/drawer_menu.dart';
 import 'package:time_tracker/widgets/no_data_found.dart';
@@ -72,7 +71,7 @@ class _TimeEntryHomeScreenState extends State<TimeEntryHomeScreen>
         title: const Text('Time Tracking'),
         centerTitle: true,
         bottom: TabBar(
-          unselectedLabelColor: Colors.black,
+          unselectedLabelColor: const Color.fromARGB(127, 0, 0, 0),
           controller: _tabController,
           indicatorColor: Colors.amber,
           labelColor: Colors.white,
@@ -84,19 +83,15 @@ class _TimeEntryHomeScreenState extends State<TimeEntryHomeScreen>
           selectedItemDrawer: (indexTab) => selectPageDrawer(indexTab),
         ),
       ),
-      body: Consumer<TimeEntryProvider>(
-        builder: (context, value, child) {
-          return TabBarView(
-            controller: _tabController,
-            children: [
-              TimeEntryList(),
-              NoDataFound(
-                icon: Icons.hourglass_empty,
-                typeOfData: 'time entries',
-              ),
-            ],
-          );
-        },
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          TimeEntryList(),
+          NoDataFound(
+            icon: Icons.hourglass_empty,
+            typeOfData: 'time entries',
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.amber,

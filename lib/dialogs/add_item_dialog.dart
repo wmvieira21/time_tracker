@@ -31,6 +31,7 @@ class AddItemDialog extends StatelessWidget {
       content: TextField(
         autofocus: true,
         controller: tittleController,
+        maxLength: 30,
         decoration: InputDecoration(
           label: Text('Tittle'),
         ),
