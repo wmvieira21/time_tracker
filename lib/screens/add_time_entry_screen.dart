@@ -73,69 +73,71 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
         centerTitle: true,
         title: const Text('Add Time Entry'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            spacing: 10,
-            children: <Widget>[
-              TimeEntryDropdown(
-                items: projects,
-                label: 'Project',
-                onChange: (value) => projectId = value,
-              ),
-              TimeEntryDropdown(
-                items: tasks,
-                label: 'Task',
-                onChange: (value) => taskId = value,
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  children: [
-                    Text('Date: ${dateFormatterAddScreen.format(date)}'),
-                    OutlinedButton(
-                        onPressed: () => _showDateTimePicker(),
-                        child: const Text('Select date'))
-                  ],
+      body: SingleChildScroll(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              spacing: 10,
+              children: <Widget>[
+                TimeEntryDropdown(
+                  items: projects,
+                  label: 'Project',
+                  onChange: (value) => projectId = value,
                 ),
-              ),
-              TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'Total Time (in hours)'),
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
-                controller: totalTimeAmountController,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter total time';
-                  }
-                  if (double.tryParse(value) == null) {
-                    return 'Please enter a valid number';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                  decoration: const InputDecoration(labelText: 'Note'),
-                  maxLength: 50,
-                  controller: notesController,
+                TimeEntryDropdown(
+                  items: tasks,
+                  label: 'Task',
+                  onChange: (value) => taskId = value,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    children: [
+                      Text('Date: ${dateFormatterAddScreen.format(date)}'),
+                      OutlinedButton(
+                          onPressed: () => _showDateTimePicker(),
+                          child: const Text('Select date'))
+                    ],
+                  ),
+                ),
+                TextFormField(
+                  decoration:
+                      const InputDecoration(labelText: 'Total Time (in hours)'),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
+                  controller: totalTimeAmountController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some notes';
+                      return 'Please enter total time';
+                    }
+                    if (double.tryParse(value) == null) {
+                      return 'Please enter a valid number';
                     }
                     return null;
-                  }),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _saveEntry();
-                  }
-                },
-                child: const Text('Save entry'),
-              )
-            ],
+                  },
+                ),
+                TextFormField(
+                    decoration: const InputDecoration(labelText: 'Note'),
+                    maxLength: 50,
+                    controller: notesController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some notes';
+                      }
+                      return null;
+                    }),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _saveEntry();
+                    }
+                  },
+                  child: const Text('Save entry'),
+                )
+              ],
+            ),
           ),
         ),
       ),
