@@ -6,7 +6,7 @@ import 'package:time_tracker/providers/projet_manager_provider.dart';
 import 'package:time_tracker/providers/task_manager_provider.dart';
 import 'package:time_tracker/screens/add_time_entry_screen.dart';
 import 'package:time_tracker/widgets/drawer_menu.dart';
-import 'package:time_tracker/widgets/no_data_found.dart';
+import 'package:time_tracker/widgets/time_entry_grouped_list.dart';
 import 'package:time_tracker/widgets/time_entry_list.dart';
 
 class TimeEntryHomeScreen extends StatefulWidget {
@@ -87,10 +87,7 @@ class _TimeEntryHomeScreenState extends State<TimeEntryHomeScreen>
         controller: _tabController,
         children: [
           TimeEntryList(),
-          NoDataFound(
-            icon: Icons.hourglass_empty,
-            typeOfData: 'time entries',
-          ),
+          TimeEntryGroupedList(),
         ],
       ),
       floatingActionButton: FloatingActionButton(

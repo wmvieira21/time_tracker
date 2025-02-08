@@ -6,7 +6,7 @@ import 'package:time_tracker/providers/task_manager_provider.dart';
 import 'package:time_tracker/providers/time_entry_provider.dart';
 import 'package:time_tracker/screens/project_manager_sreeen.dart';
 import 'package:time_tracker/screens/task_manager_screen.dart';
-import 'package:time_tracker/time_entry.dart';
+import 'package:time_tracker/screens/time_entry_home_screen.dart';
 
 final ColorScheme lightColorScheme = ColorScheme.fromSeed(
     seedColor: Color.fromARGB(255, 2, 184, 153), brightness: Brightness.light);
@@ -25,7 +25,7 @@ final ThemeData themeData = ThemeData().copyWith(
         bodyLarge:
             TextStyle(color: lightColorScheme.onPrimaryContainer, fontSize: 20),
         bodyMedium:
-            TextStyle(color: lightColorScheme.onPrimaryContainer, fontSize: 18),
+            TextStyle(color: lightColorScheme.onPrimaryContainer, fontSize: 16),
         bodySmall:
             TextStyle(color: lightColorScheme.onPrimaryContainer, fontSize: 14),
         headlineSmall: TextStyle(color: Colors.white),

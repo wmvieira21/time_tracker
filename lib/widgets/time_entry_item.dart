@@ -27,10 +27,6 @@ class TimeEntryItem extends StatelessWidget {
     return p.name;
   }
 
-  get taskById {
-    return '';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
