@@ -25,7 +25,7 @@ class AddItemDialog extends StatelessWidget {
 
     return AlertDialog(
       title: Text(
-        "Add new $tittle",
+        "Add $tittle",
         style: Theme.of(context).textTheme.bodyLarge,
       ),
       content: TextField(
@@ -33,7 +33,7 @@ class AddItemDialog extends StatelessWidget {
         controller: tittleController,
         maxLength: 30,
         decoration: InputDecoration(
-          label: Text('Tittle'),
+          label: Text('$tittle Name'),
         ),
       ),
       actions: [

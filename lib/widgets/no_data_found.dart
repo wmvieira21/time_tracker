@@ -19,7 +19,7 @@ class NoDataFound extends StatelessWidget {
           Text('No $typeOfData yet!',
               style: Theme.of(context).textTheme.bodyLarge),
           Text(
-            'Tap the + button to add your first $typeOfData.',
+            'Tap the + button to add your $typeOfData.',
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Colors.grey,
                 ),

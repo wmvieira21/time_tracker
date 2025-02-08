@@ -70,6 +70,7 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Add Time Entry'),
       ),
       body: Padding(
@@ -81,19 +82,19 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
             children: <Widget>[
               TimeEntryDropdown(
                 items: projects,
-                label: 'Projects',
+                label: 'Project',
                 onChange: (value) => projectId = value,
               ),
               TimeEntryDropdown(
                 items: tasks,
-                label: 'Tasks',
+                label: 'Task',
                 onChange: (value) => taskId = value,
               ),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Column(
                   children: [
-                    Text('Date: ${dateFormatter.format(date)}'),
+                    Text('Date: ${dateFormatterAddScreen.format(date)}'),
                     OutlinedButton(
                         onPressed: () => _showDateTimePicker(),
                         child: const Text('Select date'))
@@ -102,7 +103,7 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
               ),
               TextFormField(
                 decoration:
-                    const InputDecoration(labelText: 'Total Time (hours)'),
+                    const InputDecoration(labelText: 'Total Time (in hours)'),
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 controller: totalTimeAmountController,
@@ -117,7 +118,8 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
                 },
               ),
               TextFormField(
-                  decoration: const InputDecoration(labelText: 'Notes'),
+                  decoration: const InputDecoration(labelText: 'Note'),
+                  maxLength: 50,
                   controller: notesController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {

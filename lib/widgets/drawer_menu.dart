@@ -28,12 +28,12 @@ class DrawerMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.folder),
-            title: const Text('Manage Projets'),
+            title: const Text('Projects'),
             onTap: () => selectedItemDrawer(0),
           ),
           ListTile(
             leading: const Icon(Icons.task),
-            title: const Text('Manage Tasks'),
+            title: const Text('Tasks'),
             onTap: () => selectedItemDrawer(1),
           ),
         ],
