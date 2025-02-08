@@ -1,16 +1,22 @@
-# time_tracker
+# Time Tracker App
+Time Tracker is a simple and intuitive app designed to help you manage the time spent on your projects and tasks. With this app, you can easily track the time dedicated to various activities by creating time entries for each project and task.
 
-A new Flutter project.
+## Features
+Drawer Menu: Quick access to all app features, including project and task creation.
 
-## Getting Started
+Create Projects and Tasks: Organize your work by creating projects and their respective tasks directly from the drawer menu.
 
-This project is a starting point for a Flutter application.
+Time Entries: Add time entries for each project and task to track exactly how much time is spent. Each time entry includes the following fields:
 
-A few resources to get you started if this is your first Flutter project:
+Date: The date when the time was spent.
+Notes: Description or observations about the work done.
+Hours Worked: The amount of time dedicated to the task.
+Project: The project related to the task.
+Task: The specific task within the project.
+Home Page: Displays all recorded time entries, giving you an overview of the time spent across different periods and projects.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Project View Tab: A dedicated tab to display all time entries grouped by project, making it easier to analyze the time spent on each one.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Demonstration
+
+![time_tracker](https://github.com/user-attachments/assets/ce7e6b39-3836-4fda-aa99-892c65549eec)
