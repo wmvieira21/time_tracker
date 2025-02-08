@@ -73,7 +73,7 @@ class _AddTimeEntryScreen extends State<AddTimeEntryScreen> {
         centerTitle: true,
         title: const Text('Add Time Entry'),
       ),
-      body: SingleChildScroll(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Form(
